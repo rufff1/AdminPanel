@@ -1,0 +1,171 @@
+﻿@model ProfileVM
+@{
+    ViewData["Title"] = "ProfileEdit";
+
+
+
+    IEnumerable<State> states = ViewBag.State;
+    SelectList selectListItems = new SelectList(states, nameof(State.Id), nameof(State.Name));
+}
+
+
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Profile</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a  asp-controller="dashboard" asp-action="index">Home</a></li>
+                <li class="breadcrumb-item">Users</li>
+                <li class="breadcrumb-item active">Profile</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+
+            <div class="col-xl-8">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+
+                        <div class="tab-content pt-2">
+
+
+                            <div class="pt-3">
+
+                                <!-- Profile Edit Form -->
+                                <form method="post" enctype="multipart/form-data">
+                                    <div class="row mb-3">
+                                        <label asp-for="UserImageFile" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                        <div class="col-md-8 col-lg-9">
+
+
+                                            <input asp-for="UserImageFile" class="form-control" />
+                                            <span asp-validation-for="UserImageFile" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label asp-for="Name" class="col-md-4 col-lg-3 col-form-label">Name</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="Name" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="Name" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label asp-for="UserName" class="col-md-4 col-lg-3 col-form-label">UserName</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="UserName" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="UserName" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label asp-for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="Email" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="Email" class="text text-danger"></span>
+
+                                    </div>
+                       
+                                    <div class="row mb-3">
+                                        <label asp-for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="Job" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="Job" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label asp-for="Salary" class="col-md-4 col-lg-3 col-form-label">Salary</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="Salary" class="form-control checking">
+                                        </div>
+                                        <span asp-validation-for="Salary" class="text text-danger "></span>
+
+                                    </div>
+
+
+
+                                    <div class="row mb-3">
+                                        <label asp-for="Adress" class="col-md-4 col-lg-3 col-form-label">Adress</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="Adress" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="Adress" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label asp-for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="Phone" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="Phone" class="text text-danger"></span>
+
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label asp-for="CurrentPaswoord" class="col-md-4 col-lg-3 col-form-label">Current Paswoord</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="CurrentPaswoord" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="CurrentPaswoord" class="text text-danger"></span>
+
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label asp-for="NewPaswoord" class="col-md-4 col-lg-3 col-form-label">New Paswoord</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="NewPaswoord" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="NewPaswoord" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label asp-for="ConfirmPaswoord" class="col-md-4 col-lg-3 col-form-label">Confirm Paswoord</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input asp-for="ConfirmPaswoord" class="form-control">
+                                        </div>
+                                        <span asp-validation-for="ConfirmPaswoord" class="text text-danger"></span>
+
+                                    </div>
+
+
+
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form><!-- End Profile Edit Form -->
+
+                            </div>
+
+
+
+                        </div><!-- End Bordered Tabs -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+
+<script>
+    let checkX = document.querySelector(".checking");
+
+    checkX.addEventListener("input", function (e) {
+        if (e.target.value < 0) {
+            e.target.value = 0
+        }
+    })
+</script>

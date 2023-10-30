@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20231027082145_CreateStateTable.cs" />
+    <Compile Remove="Migrations\20231027082145_CreateStateTable.Designer.cs" />
+    <Compile Remove="Migrations\20231027082518_StateTable.cs" />
+    <Compile Remove="Migrations\20231027082518_StateTable.Designer.cs" />
+    <Compile Remove="Migrations\20231027082937_Ok.cs" />
+    <Compile Remove="Migrations\20231027082937_Ok.Designer.cs" />
+    <Compile Remove="Migrations\20231030093332_CreateBlogRelationAndTagtable.cs" />
+    <Compile Remove="Migrations\20231030093332_CreateBlogRelationAndTagtable.Designer.cs" />
+    <Compile Remove="Migrations\20231030122255_AddElanRelationTag.cs" />
+    <Compile Remove="Migrations\20231030122255_AddElanRelationTag.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="libphonenumber-csharp" Version="8.13.23" />
+    <PackageReference Include="MailKit" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\manage\assets\img\Elan-Photo\" />
+    <Folder Include="wwwroot\manage\assets\img\Blog-photo\" />
+    <Folder Include="wwwroot\manage\assets\img\user-image\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,250 @@
+﻿@model DashboardVM
+@{ ViewData["Title"] = "Index"; }
+
+
+
+
+
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="dasboard" asp-action="index">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-8">
+                <div class="row">
+
+
+                    <!-- Customers Card -->
+                    <div class="col-xxl-4 col-xl-12">
+
+                        <div class="card info-card customers-card">
+
+
+                            <div class="card-body">
+                                <h5 class="card-title">Customers <span>| This Year</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>@Model.AppUsers.Count()</h6>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div><!-- End Customers Card -->
+                    <!-- Reports -->
+                    <!-- Recent Sales -->
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card top-selling overflow-auto">
+
+
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">Top Users</h5>
+
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Photo</th>
+                                                <th scope="col">Ad</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone</th>
+                                                <th scope="col">Salary</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           @if (Model.AppUsers.Count() != 0)
+                                           {
+
+                                        
+                                            @foreach (AppUser appUser in Model.AppUsers)
+                                            {
+                                            <tr>
+                                                @if (appUser.UserImage == null)
+                                                {
+                                            <th scope="row"><a><img src="~/manage/assets/img/user-image/nulluser.jpg" alt=""></a></th>
+ }
+                                        else
+                                        {
+                                            <th scope="row"><a><img src="~/manage/assets/img/user-image/@appUser.UserImage" alt=""></a></th>
+}
+
+                                                <td><a href="#" class="text-primary fw-bold">@appUser.Name</a></td>
+                                                <td>@appUser.Email</td>
+                                                <td class="fw-bold">@appUser.Phone</td>
+                                                <td>@appUser.Salary</td>
+
+                                                <td></td>
+                                            </tr>}
+                                           }
+
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div><!-- End Recent Sales -->
+                    <!-- Top Selling -->
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card top-selling overflow-auto">
+
+
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">Top Elans</h5>
+
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Elan Photo</th>
+                                                <th scope="col">Elan</th>
+                                                <th scope="col">Category Adi</th>
+                                                <th scope="col">Description</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (Elan elan in Model.Elans)
+                                            {
+                                <tr>
+
+                                    <th scope="row"><a><img src="~/manage/assets/img/Elan-Photo/@elan.Image" alt=""></a></th>
+
+
+
+                                    <td><a href="#" class="text-primary fw-bold">@elan.Title</a></td>
+                                    <td>@elan.Category.Name</td>
+                                    <td class="fw-bold">@elan.Description</td>
+
+                                </tr>}
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div><!-- End Top Selling -->
+
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card top-selling overflow-auto">
+
+
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">Top Blog</h5>
+
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Blog Photo</th>
+                                                <th scope="col">Blog</th>
+                                                <th scope="col">Category Adi</th>
+                                                <th scope="col">Description</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (Blog blog in Model.Blogs)
+                                            {
+                                <tr>
+
+                                    <th scope="row"><a><img src="~/manage/assets/img/Blog-Photo/@blog.Image" alt=""></a></th>
+
+
+
+                                    <td><a href="#" class="text-primary fw-bold">@blog.Title</a></td>
+                                   <td>@blog.category.Name</td>
+                                    <td class="fw-bold">@blog.Description</td>
+
+                                </tr>}
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div><!-- End Top Selling -->
+
+                </div>
+            </div><!-- End Left side columns -->
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+
+            
+                <div class="card">
+                    <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <li class="dropdown-header text-start">
+                                <h6>Filter</h6>
+                            </li>
+
+                            <li><a class="dropdown-item" href="#">Today</a></li>
+                            <li><a class="dropdown-item" href="#">This Month</a></li>
+                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+
+                        <div class="news">
+
+                    @foreach (Blog blog1 in Model.Blogs.TakeLast(5))
+                    {
+
+                            <div class="post-item clearfix">
+                                <img src="~/manage/assets/img/@blog1.Image" alt="">
+                                <h4><a href="#">@blog1.Title</a></h4>
+                                <p>@blog1.Description</p>
+                            </div>
+                    }
+
+
+
+                        </div><!-- End sidebar recent posts-->
+
+                    </div>
+                </div><!-- End News & Updates -->
+
+            </div><!-- End Right side columns -->
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
