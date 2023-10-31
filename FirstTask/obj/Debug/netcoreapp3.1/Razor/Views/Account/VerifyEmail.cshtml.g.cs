@@ -48,7 +48,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cc0e466fdeacdad952902b73409982205aec5f57", @"/Views/Account/VerifyEmail.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"795f0a5d7dc1be08e465c70025ce5fc98aba99af", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0513ad2a501b80386096493bd2a6845d4bcf2138", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_VerifyEmail : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

@@ -13,10 +13,14 @@ namespace FirstTask.ViewModels
         public string Name { get; set; }
         public IEnumerable<State> States { get; set; }
         public AppUser AppUser { get; set; }
+        public int? StateId { get; set; }
+
 
         [Required]
         public int Salary { get; set; }
         public string UserName { get; set; }
+        public State State { get; set; }
+
         [EmailAddress]
         public string Email { get; set; }
         [DataType(DataType.Password)]

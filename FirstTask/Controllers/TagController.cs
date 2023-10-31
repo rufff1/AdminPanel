@@ -115,6 +115,7 @@ namespace FirstTask.Controllers
 
 
             bool isExist = _context.Tags.Any(c => c.IsDeleted == false && c.Name.ToLower() == tag.Name.ToLower().Trim());
+          
             if (isExist && !((existedTag.Name.ToLower() == tag.Name.ToLower().Trim())))
             {
                 ModelState.AddModelError("", "Bu adda tag artig var");
@@ -180,10 +181,7 @@ namespace FirstTask.Controllers
             }
 
 
-            if (tag.Blogs.Count() > 0)
-            {
-                return Json(new { status = 400 });
-            }
+          
 
             tag.IsDeleted = true;
             tag.DeletedAt = DateTime.UtcNow.AddHours(4);
@@ -191,7 +189,7 @@ namespace FirstTask.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("index", new { status = 200 });
+            return RedirectToAction("index");
         }
 
     }

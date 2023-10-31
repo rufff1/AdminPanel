@@ -49,6 +49,28 @@
                                         </div>
                                     </div>
 
+
+                                    <div class="row mb-3">
+                                        @*<label asp-for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Phone" class="form-control">
+
+            </div>
+            <span asp-validation-for="Phone" class="text text-danger"></span>*@
+
+                                        <select id="countryCode">
+                                            <option value="+1">USA (+1)</option>
+                                            <option value="+44">UK (+44)</option>
+                                            <option value="+994">Az (+994)</option>
+                                            <!-- Add other country codes as needed -->
+                                        </select>
+                                        <label asp-for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                        <input type="text" id="phoneInput" asp-for="Phone" placeholder="Phone number">
+                                        <span asp-validation-for="Phone" class="text text-danger"></span>
+
+
+                                    </div>
+
                                     <div class="row mb-3">
                                         <label asp-for="Name" class="col-md-4 col-lg-3 col-form-label">Name</label>
                                         <div class="col-md-8 col-lg-9">
@@ -73,7 +95,7 @@
                                         <span asp-validation-for="Email" class="text text-danger"></span>
 
                                     </div>
-                       
+
                                     <div class="row mb-3">
                                         <label asp-for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
                                         <div class="col-md-8 col-lg-9">
@@ -90,7 +112,13 @@
                                         <span asp-validation-for="Salary" class="text text-danger "></span>
 
                                     </div>
+                                    <div class="form-group">
+                                        <label asp-for="StateId" class="control-label"></label>
+                                        <select asp-for="StateId" class="form-control" asp-items="selectListItems"></select>
+                                        <span asp-validation-for="StateId" class="text-danger"></span>
 
+
+                                    </div>
 
 
                                     <div class="row mb-3">
@@ -101,14 +129,7 @@
                                         <span asp-validation-for="Adress" class="text text-danger"></span>
 
                                     </div>
-                                    <div class="row mb-3">
-                                        <label asp-for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input asp-for="Phone" class="form-control">
-                                        </div>
-                                        <span asp-validation-for="Phone" class="text text-danger"></span>
 
-                                    </div>
 
                                     <div class="row mb-3">
                                         <label asp-for="CurrentPaswoord" class="col-md-4 col-lg-3 col-form-label">Current Paswoord</label>
@@ -158,6 +179,12 @@
     </section>
 
 </main><!-- End #main -->
+
+
+
+
+
+
 
 
 <script>

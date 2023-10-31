@@ -26,9 +26,10 @@ namespace FirstTask.Models
         [StringLength(20)]
         public string Phone { get; set; }
 
+        public int? StateId { get; set; }
 
         public State State { get; set; }
-        public int? StateId { get; set; }
+       
 
         [StringLength(1000)]
         public string UserImage { get; set; }
@@ -38,5 +39,7 @@ namespace FirstTask.Models
         public string PasswordResetToken { get; set; }
         public bool isConfirmed { get; set; }
         public string ConnectionId { get; set; }
+
+  
     }
 }

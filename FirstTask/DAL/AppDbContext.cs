@@ -21,6 +21,7 @@ namespace FirstTask.DAL
         public DbSet<BlogTag> BlogTags { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ElanTag> ElanTags { get; set; }
+        public DbSet<Brand> Brands { get; set; }
 
 
 

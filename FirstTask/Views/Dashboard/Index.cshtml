@@ -72,30 +72,29 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           @if (Model.AppUsers.Count() != 0)
-                                           {
-
-                                        
-                                            @foreach (AppUser appUser in Model.AppUsers)
+                                            @if (Model.AppUsers.Count() != 0)
                                             {
-                                            <tr>
-                                                @if (appUser.UserImage == null)
-                                                {
-                                            <th scope="row"><a><img src="~/manage/assets/img/user-image/nulluser.jpg" alt=""></a></th>
+
+
+                                @foreach (AppUser appUser in Model.AppUsers)
+                                {
+                <tr>
+                    @if (appUser.UserImage == null)
+                    {
+<th scope="row"><a><img src="~/manage/assets/img/user-image/nulluser.jpg" alt=""></a></th>
  }
-                                        else
-                                        {
-                                            <th scope="row"><a><img src="~/manage/assets/img/user-image/@appUser.UserImage" alt=""></a></th>
+else
+{
+<th scope="row"><a><img src="~/manage/assets/img/user-image/@appUser.UserImage" alt=""></a></th>
 }
 
-                                                <td><a href="#" class="text-primary fw-bold">@appUser.Name</a></td>
-                                                <td>@appUser.Email</td>
-                                                <td class="fw-bold">@appUser.Phone</td>
-                                                <td>@appUser.Salary</td>
+                    <td><a href="#" class="text-primary fw-bold">@appUser.Name</a></td>
+                    <td>@appUser.Email</td>
+                    <td class="fw-bold">@appUser.Phone</td>
+                    <td>@appUser.Salary</td>
 
-                                                <td></td>
-                                            </tr>}
-                                           }
+                    <td></td>
+                </tr>}}
 
 
                                         </tbody>
@@ -183,7 +182,7 @@
 
 
                                     <td><a href="#" class="text-primary fw-bold">@blog.Title</a></td>
-                                   <td>@blog.category.Name</td>
+                                    <td>@blog.category.Name</td>
                                     <td class="fw-bold">@blog.Description</td>
 
                                 </tr>}
@@ -200,12 +199,58 @@
                         </div>
                     </div><!-- End Top Selling -->
 
+
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card top-selling overflow-auto">
+
+
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">Top Brand</h5>
+
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Brand Photo</th>
+                                                <th scope="col">Brand</th>
+                                                <th scope="col">Brand Info</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (Brand brand in Model.Brands)
+                                            {
+                                <tr>
+
+                                    <th scope="row"><a><img src="~/manage/assets/img/Brand-photo/@brand.Image" alt=""></a></th>
+
+
+
+                                    <td><a href="#" class="text-primary fw-bold">@brand.Name</a></td>
+
+                                    <td class="fw-bold">@brand.BrandInfo</td>
+
+                                </tr>}
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div><!-- End Top Selling -->
+
+
                 </div>
             </div><!-- End Left side columns -->
             <!-- Right side columns -->
             <div class="col-lg-4">
 
-            
+
                 <div class="card">
                     <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -225,15 +270,14 @@
 
                         <div class="news">
 
-                    @foreach (Blog blog1 in Model.Blogs.TakeLast(5))
-                    {
+                            @foreach (Blog blog1 in Model.Blogs.TakeLast(5))
+                            {
 
-                            <div class="post-item clearfix">
-                                <img src="~/manage/assets/img/@blog1.Image" alt="">
-                                <h4><a href="#">@blog1.Title</a></h4>
-                                <p>@blog1.Description</p>
-                            </div>
-                    }
+                                <div class="post-item clearfix">
+                                    <img src="~/manage/assets/img/@blog1.Image" alt="">
+                                    <h4><a href="#">@blog1.Title</a></h4>
+                                    <p>@blog1.Description</p>
+                                </div>}
 
 
 
@@ -248,3 +292,6 @@
     </section>
 
 </main><!-- End #main -->
+
+
+

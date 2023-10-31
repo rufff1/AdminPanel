@@ -19,7 +19,7 @@ namespace FirstTask.Controllers
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
 
         public BlogController(AppDbContext context, IWebHostEnvironment env)
         {
@@ -53,7 +53,7 @@ namespace FirstTask.Controllers
         }
 
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Blog blog)
         {
 
@@ -156,7 +156,7 @@ namespace FirstTask.Controllers
         }
 
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int? id, Blog blog)
         {
             ViewBag.Category = await _context.Categories.Where(c => c.IsDeleted == false).ToListAsync();

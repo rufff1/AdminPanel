@@ -12,5 +12,6 @@ namespace FirstTask.ViewModels
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<AppUser> AppUsers { get; set; }
         public IEnumerable<Blog> Blogs { get; set; }
+        public IEnumerable<Brand> Brands { get; set; }
     }
 }

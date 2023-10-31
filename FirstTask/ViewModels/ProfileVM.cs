@@ -19,9 +19,11 @@ namespace FirstTask.ViewModels
 
         [Required]
         public string Job { get; set; }
-    
 
-     
+        public State State { get; set; }
+
+        public int? StateId { get; set; }
+
         [Required]
         public string Adress { get; set; }
         [Required]

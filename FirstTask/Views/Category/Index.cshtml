@@ -70,12 +70,13 @@
 
 
 @section Scripts{
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>$(".delete-btn").click(function (e) {
-                e.preventDefault()
-                console.log($(this).attr("href"))
+    e.preventDefault()
+    console.log($(this).attr("href"))
+  
                 Swal.fire({
-                    title: 'Silmek istediyinizden eminsiz?',
+                   title: 'Silmek istediyinizden eminsiz?',
                     text: "Bunu geri qaytara bilməyəcəksiniz!",
                     icon: 'warning',
                     showCancelButton: true,
@@ -101,7 +102,9 @@
                         );
                     }
                 })
-            })</script>
+})
+    
+    </script>
 
 
 

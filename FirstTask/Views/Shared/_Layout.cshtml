@@ -21,9 +21,6 @@
            <link href="~/manage/assets/img/favicon.png" rel="icon">
            <link href="~/manage/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-           <link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css
-" rel="stylesheet">
 
 
 
@@ -40,7 +37,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css
            <link href="~/manage/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
            <link href="~/manage/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-
+           <link rel="stylesheet" href="sweetalert2.min.css">
 
            <!-- Template Main CSS File -->
            <link href="~/manage/assets/css/style.css" rel="stylesheet">
@@ -185,6 +182,13 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css
                                </li>
 
 
+                               <li>
+                                   <a asp-controller="brand" asp-action="index">
+                                       <i class="bi bi-circle"></i><span>Brand</span>
+                                   </a>
+                               </li>
+
+
                            </ul>
                        </li><!-- End Components Nav -->
 
@@ -204,6 +208,15 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css
                                <span>Profile</span>
                            </a>
                        </li><!-- End Profile Page Nav -->
+                       <li class="nav-item">
+                           <a class="nav-link collapsed" asp-controller="account" asp-action="profileedit">
+                               <i class="bi bi-box-arrow-in-right"></i>
+                               <span>Profile Edit</span>
+                           </a>
+                       </li><!-- End Login Page Nav -->
+
+
+
                    }
                    else
                    {
@@ -220,6 +233,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css
                                <span>Login</span>
                            </a>
                        </li><!-- End Login Page Nav -->
+
 
                    }
 
@@ -251,6 +265,13 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css
            <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 
+           <script src="sweetalert2.all.min.js"></script>
+           <script src="sweetalert2.min.js"></script>
+
+
+           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.all.min.js"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
            <!-- Vendor JS Files -->
            <script src="~/manage/assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -270,15 +291,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.min.css
 
 
            <script src="~/manage/assets/js/main.js"></script>
-         
-           <script src="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.8.0/dist/sweetalert2.all.min.js
-"></script>
-
-
-
-
-           <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+           <script src="~/manage/assets/js/Custom.js"></script>
 
 
 

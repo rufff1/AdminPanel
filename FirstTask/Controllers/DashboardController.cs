@@ -18,7 +18,7 @@ namespace FirstTask.Areas.Manage.Controllers
 
         private readonly UserManager<AppUser> _userManager;
 
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly AppDbContext _context;
         public DashboardController(AppDbContext context, IWebHostEnvironment env, UserManager<AppUser> userManager)
         {
@@ -38,7 +38,9 @@ namespace FirstTask.Areas.Manage.Controllers
                 .OrderBy(e => e.Name).ToListAsync(),
                 Blogs = await _context.Blogs.OrderBy(e => e.Title)
                 .Include(b => b.category)
-                .Where(b => b.IsDeleted == false).ToListAsync()
+                .Where(b => b.IsDeleted == false).ToListAsync(),
+                Brands = await _context.Brands.Where(b=> b.IsDeleted == false).ToListAsync()
+                 
             };
 
 
@@ -46,5 +48,11 @@ namespace FirstTask.Areas.Manage.Controllers
 
             return View(dashboardVm);
         }
+
+     
+
     }
+
+
+
 }

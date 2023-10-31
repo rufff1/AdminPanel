@@ -44,7 +44,7 @@ namespace FirstTask
             });
 
             services.AddHttpContextAccessor();
-            //services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IEmailService, EmailService>();
              services.AddScoped<IFileService, FileService>();
            
 

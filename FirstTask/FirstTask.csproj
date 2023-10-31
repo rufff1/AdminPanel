@@ -15,6 +15,14 @@
     <Compile Remove="Migrations\20231030093332_CreateBlogRelationAndTagtable.Designer.cs" />
     <Compile Remove="Migrations\20231030122255_AddElanRelationTag.cs" />
     <Compile Remove="Migrations\20231030122255_AddElanRelationTag.Designer.cs" />
+    <Compile Remove="Migrations\20231031070414_CreateBrandTable.cs" />
+    <Compile Remove="Migrations\20231031070414_CreateBrandTable.Designer.cs" />
+    <Compile Remove="Migrations\20231031081820_CrateBrandTable.cs" />
+    <Compile Remove="Migrations\20231031081820_CrateBrandTable.Designer.cs" />
+    <Compile Remove="Migrations\20231031082405_CreateBrandTable.cs" />
+    <Compile Remove="Migrations\20231031082405_CreateBrandTable.Designer.cs" />
+    <Compile Remove="Migrations\20231031082529_CreateBrandTable.cs" />
+    <Compile Remove="Migrations\20231031082529_CreateBrandTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +43,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\manage\assets\img\Elan-Photo\" />
     <Folder Include="wwwroot\manage\assets\img\Blog-photo\" />
+    <Folder Include="wwwroot\manage\assets\img\Brand-photo\" />
     <Folder Include="wwwroot\manage\assets\img\user-image\" />
   </ItemGroup>
 

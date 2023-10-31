@@ -24,20 +24,22 @@ namespace FirstTask.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly AppDbContext _context;
-        // private readonly IEmailService _emailService;
+        private readonly IEmailService _emailService;
         private readonly IFileService _fileService;
 
 
-        public AccountController(IFileService fileService, RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env, AppDbContext context)
+
+
+        public AccountController(IEmailService emailService,IFileService fileService, RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env, AppDbContext context)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _env = env;
             _context = context;
-            // _emailService = emailService;
+            _emailService = emailService;
             _fileService = fileService;
 
         }
@@ -69,14 +71,7 @@ namespace FirstTask.Controllers
                 return View(registerVM);
             }
 
-            if (!await _context.States
-             
-           
-                .AnyAsync(s => s.IsDeleted == false && s.Id == registerVM.AppUser.StateId))
-            {
-                ModelState.AddModelError("registerVM.StateId", "Gelen State yalnisdir");
-                return View(registerVM);
-            }
+       
 
          
             AppUser appUser = new AppUser
@@ -88,7 +83,8 @@ namespace FirstTask.Controllers
                 Salary =registerVM.Salary,
                 Phone = registerVM.Phone,
                 Adress = registerVM.Adress,
-             
+                StateId = registerVM.StateId,
+
 
             };
 
@@ -212,6 +208,8 @@ namespace FirstTask.Controllers
            
             AppUser appUser = await _userManager
                 .FindByNameAsync(User.Identity.Name);
+
+
             ProfileVM profileVM = new ProfileVM
             {
                 Name = appUser.Name,
@@ -222,7 +220,10 @@ namespace FirstTask.Controllers
                 Salary = appUser.Salary,
                 Phone = appUser.Phone,
                 UserImage = appUser.UserImage,
-             
+                StateId=appUser.StateId,
+                
+                
+                 
 
             };
 
@@ -250,8 +251,10 @@ namespace FirstTask.Controllers
                 Salary = appUser.Salary,
                 Phone = appUser.Phone,
                 UserImage = appUser.UserImage,
+                 StateId = appUser.StateId,
+                
+              
                  
-
             };
 
          
@@ -348,7 +351,8 @@ namespace FirstTask.Controllers
                 appUser.Adress = profileVM.Adress;
                 appUser.Salary = profileVM.Salary;
                 appUser.Phone = profileVM.Phone;
-              
+                appUser.StateId = profileVM.StateId;
+                 
 
                 IdentityResult identityResult = await _userManager.UpdateAsync(appUser);
                 if (!identityResult.Succeeded)
@@ -402,99 +406,99 @@ namespace FirstTask.Controllers
 
 
 
-        // Paswoord reset with email
-        // [HttpGet]
-        //public IActionResult ForgotPassword()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
 
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPassword)
-        //{
-        //    if (!ModelState.IsValid) return View();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPassword)
+        {
+            if (!ModelState.IsValid) return View();
 
-        //    AppUser existUser = await _userManager.FindByEmailAsync(forgotPassword.Email);
+            AppUser existUser = await _userManager.FindByEmailAsync(forgotPassword.Email);
 
-        //    if (existUser == null)
-        //    {
-        //        ModelState.AddModelError("Email", "User not Found!");
-        //        return View();
-        //    }
+            if (existUser == null)
+            {
+                ModelState.AddModelError("Email", "User not Found!");
+                return View();
+            }
 
-        //    string token = await _userManager.GeneratePasswordResetTokenAsync(existUser);
+            string token = await _userManager.GeneratePasswordResetTokenAsync(existUser);
 
-        //    string link = Url.Action(nameof(ResetPassword), "Account", new { userId = existUser.Id, token },
-        //        Request.Scheme, Request.Host.ToString());
-
-
-        //    string body = string.Empty;
-        //    string path = "wwwroot/manage/assets/templates/verify.html";
-        //    string subject = "Verify password reset Email";
-
-        //    body = _fileService.ReadFile(path, body);
-
-        //    body = body.Replace("{{link}}", link);
-        //    body = body.Replace("{{FullName}}", existUser.Name);
-
-        //    _emailService.Send(existUser.Email, subject, body);
-
-        //    return RedirectToAction(nameof(VerifyEmail));
-        //}
+            string link = Url.Action(nameof(ResetPassword), "Account", new { userId = existUser.Id, token },
+                Request.Scheme, Request.Host.ToString());
 
 
+            string body = string.Empty;
+            string path = "wwwroot/manage/assets/templates/verify.html";
+            string subject = "Verify password reset Email";
 
-        //[HttpGet]
-        //public IActionResult ResetPassword(string userId, string token)
-        //{
-        //    return View(new ResetPasswordVM { UserId = userId, Token = token });
-        //}
+            body = _fileService.ReadFile(path, body);
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPassword)
-        //{
-        //    if (!ModelState.IsValid) return View(resetPassword);
+            body = body.Replace("{{link}}", link);
+            body = body.Replace("{{FullName}}", existUser.Name);
 
-        //    AppUser existUser = await _userManager.FindByIdAsync(resetPassword.UserId);
+            _emailService.Send(existUser.Email, subject, body);
 
-        //    if (existUser == null) return NotFound();
-
-        //    if (await _userManager.CheckPasswordAsync(existUser, resetPassword.Password))
-        //    {
-        //        ModelState.AddModelError("", "Your password already exist!");
-        //        return View(resetPassword);
-        //    }
+            return RedirectToAction(nameof(VerifyEmail));
+        }
 
 
-        //    await _userManager.ResetPasswordAsync(existUser, resetPassword.Token, resetPassword.Password);
 
-        //    return RedirectToAction("Login", "Account");
-        //}
+        [HttpGet]
+        public IActionResult ResetPassword(string userId, string token)
+        {
+            return View(new ResetPasswordVM { UserId = userId, Token = token });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPassword)
+        {
+            if (!ModelState.IsValid) return View(resetPassword);
+
+            AppUser existUser = await _userManager.FindByIdAsync(resetPassword.UserId);
+
+            if (existUser == null) return NotFound();
+
+            if (await _userManager.CheckPasswordAsync(existUser, resetPassword.Password))
+            {
+                ModelState.AddModelError("", "Your password already exist!");
+                return View(resetPassword);
+            }
 
 
-        //public async Task<IActionResult> ConfirmEmail(string userId, string token)
-        //{
-        //    if (userId == null || token == null) return BadRequest();
+            await _userManager.ResetPasswordAsync(existUser, resetPassword.Token, resetPassword.Password);
 
-        //    AppUser user = await _userManager.FindByIdAsync(userId);
-
-        //    if (user == null) return NotFound();
-
-        //    await _userManager.ConfirmEmailAsync(user, token);
-
-        //    await _signInManager.SignInAsync(user, false);
-
-        //    return RedirectToAction("Index", "Home");
-        //}
+            return RedirectToAction("Login", "Account");
+        }
 
 
-        //public IActionResult VerifyEmail()
-        //{
-        //    return View();
-        //}
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null) return BadRequest();
+
+            AppUser user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null) return NotFound();
+
+            await _userManager.ConfirmEmailAsync(user, token);
+
+            await _signInManager.SignInAsync(user, false);
+
+            return RedirectToAction("Index", "Dashboard");
+        }
+
+
+        public IActionResult VerifyEmail()
+        {
+            return View();
+        }
+
 
 
 
