@@ -44,12 +44,9 @@ namespace FirstTask.Areas.Manage.Controllers
             };
 
 
-
-
             return View(dashboardVm);
         }
 
-     
 
     }
 
